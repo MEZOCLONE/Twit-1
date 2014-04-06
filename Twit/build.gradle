@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile files('C:/Users/distill/AndroidStudioProjects/Twit/libs/jtwitter-yamba.jar')
+    compile files('libs/jtwitter-yamba.jar')
 }
