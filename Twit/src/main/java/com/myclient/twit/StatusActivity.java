@@ -1,12 +1,16 @@
 package com.myclient.twit;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,9 +28,9 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     private static final String TAG = "StatusActivity";
     EditText editText;
     Button publishButton;
-    Twitter twitter;
     TextView charactersLeft;
     private String stringCharacters;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +44,16 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         editText.addTextChangedListener(this);
         publishButton.setOnClickListener(this);
 
-        twitter = new Twitter("student", "password");
-        twitter.setAPIRootUrl("http://yamba.marakana.com/api");
-
         stringCharacters = getString(R.string.characters);
         charactersLeft.setText("140 " + stringCharacters);
         charactersLeft.setTextColor(Color.GREEN);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.twit, menu);
+        return true;
     }
 
     @Override
@@ -53,6 +61,17 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         String status = editText.getText().toString();
         new PostToTwitter().execute(status);
         Log.d(TAG, "onClicked");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, PrefsActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     @Override
@@ -83,7 +102,7 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         @Override
         protected String doInBackground(String... params) {
             try {
-                Twitter.Status status = twitter.updateStatus(params[0]);
+                Twitter.Status status = ((TwitApplication) getApplication()).getTwitter().updateStatus(params[0]);
                 return status.text;
             } catch (TwitterException e) {
                 Log.e(TAG, e.toString());

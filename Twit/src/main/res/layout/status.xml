@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8cc7ff"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/titleStatus"
-        android:gravity="center"
-        android:textSize="30sp"
         android:layout_margin="10dp"
-        android:id="@+id/textView" />
+        android:gravity="center"
+        android:text="@string/titleStatus"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000e82"
+        android:textSize="30sp" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="1"
-        android:hint="@string/hintText"
+        android:background="#aaFFFFFF"
         android:gravity="top|center_horizontal"
-        android:id="@+id/editText" />
+        android:hint="@string/hintText"
+        android:padding="10dp"
+        android:textColorHint="#ff527693" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/characters"
+        android:layout_marginRight="10dp"
         android:gravity="right"
-        android:id="@+id/textView2" />
+        android:text="@string/characters"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
         android:text="@string/buttonUpdate"
-        android:textSize="20sp"
-        android:id="@+id/button" />
+        android:textSize="20sp" />
 </LinearLayout>

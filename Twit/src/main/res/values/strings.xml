@@ -8,5 +8,13 @@
     <string name="hintText">Max 140 characters here...</string>
     <string name="buttonUpdate">Publish</string>
     <string name="characters">characters left</string>
+    <string name="titleUsername">Username</string>
+    <string name="summaryUsername">Add username</string>
+    <string name="titlePassword">Password</string>
+    <string name="summaryPassword">Add password</string>
+    <string name="titleApiRoot">API Root</string>
+    <string name="summaryApiRoot">Add API Root</string>
+    <string name="titlePrefs">Preferences</string>
+
 
 </resources>
