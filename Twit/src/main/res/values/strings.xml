@@ -4,5 +4,9 @@
     <string name="app_name">Twit</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="titleStatus">How are you feeling now?</string>
+    <string name="hintText">Max 140 characters here...</string>
+    <string name="buttonUpdate">Publish</string>
+    <string name="characters">characters left</string>
 
 </resources>

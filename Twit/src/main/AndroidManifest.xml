@@ -12,7 +12,7 @@
         android:name=".TwitApplication">
         <service android:name=".UpdaterService" />
         <activity
-            android:name="com.myclient.twit.TwitActivity"
+            android:name="com.myclient.twit.StatusActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
