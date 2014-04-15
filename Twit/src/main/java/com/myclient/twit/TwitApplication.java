@@ -33,11 +33,11 @@ public class TwitApplication extends Application implements SharedPreferences.On
     public synchronized Twitter getTwitter() {
         if (twitter == null) { //
             String username, password, apiRoot;
-            username = prefs.getString("username", ""); //
+            username = prefs.getString("username", "");
             password = prefs.getString("password", "");
             apiRoot = prefs.getString("apiRoot", "http://yamba.marakana.com/api");
-// Connect to twitter.com
-            twitter = new Twitter(username, password); //
+            // Connect to twitter.com
+            twitter = new Twitter(username, password);
             twitter.setAPIRootUrl(apiRoot); //
         }
         return twitter;

@@ -30,6 +30,7 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     Button publishButton;
     TextView charactersLeft;
     private String stringCharacters;
+    private Menu optionsMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,9 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.twit, menu);
+
+        updateOptionsMenu(this.optionsMenu = menu);
+
         return true;
     }
 
@@ -67,10 +71,18 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent intent = new Intent(this, PrefsActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, PrefsActivity.class));
+                break;
+            case R.id.action_start:
+                startService(new Intent(this, UpdaterService.class));
+                break;
+            case R.id.action_stop:
+                stopService(new Intent(this, UpdaterService.class));
                 break;
         }
+
+//        updateOptionsMenu(this.optionsMenu);
+
         return true;
     }
 
@@ -95,6 +107,11 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         }else {
             charactersLeft.setTextColor(Color.GREEN);
         }
+    }
+
+    private void updateOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_start).setEnabled(!((TwitApplication) getApplication()).isServiceRunning());
+        menu.findItem(R.id.action_stop).setEnabled(((TwitApplication) getApplication()).isServiceRunning());
     }
 
     // Async post to twitter
